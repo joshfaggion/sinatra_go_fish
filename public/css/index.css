@@ -20,6 +20,11 @@ h1 {
   margin-right: -30px;
 }
 
+.pile-deck-card {
+  margin-left: -34.5px;
+  margin-right: -34.5px;
+}
+
 .left-cards {
    display: inline;
    text-align: left;

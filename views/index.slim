@@ -1,42 +1,31 @@
-doctype html
-html
-  head
-    title Go Fish: The Ultimate Battle
-    link rel="stylesheet" type='text/css' href="css/index.css"
-  body
-    h1.heading - Go Fish: The Ultimate Battle -
-    div.top-cards
-      h2 style="margin-bottom: 30px;"-Player3-
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-    div.left-cards
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      h2 style="transform: rotate(-90deg); margin: 50px 30px 0 0;"-Player 2-
-    div.right-cards
-      img.deck-card src="img/cards/backs_blue.png"
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      h2 style="transform: rotate(90deg); margin: 50px 0 0 30px;"-Player 4-
-    div.playing-space
-      h2 style="margin-top:70px;" -Go Fish Pile-
-      img.middle-card.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      img.deck-card src='img/cards/backs_blue.png'
-      h2 style="margin-top: 40px;"
-    div.your-hand
-      h2 style="margin-bottom: 25px;"-Your Hand-
-      img src="img/cards/dk.png"
-      img src="img/cards/d5.png"
-      img src="img/cards/c2.png"
-      img src="img/cards/h10.png"
-      img src="img/cards/s7.png"
+h1.heading - Go Fish: The Ultimate Battle -
+div.top-cards
+  h2 style="margin-bottom: 30px;"-Player3-
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+div.left-cards
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  h2 style="transform: rotate(-90deg); margin: 50px 30px 0 0;"-Player 2-
+div.right-cards
+  img.deck-card src="img/cards/backs_blue.png"
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  h2 style="transform: rotate(90deg); margin: 50px 0 0 30px;"-Player 4-
+div.playing-space
+  h2 style="margin-top:70px;" -Go Fish Pile-
+  - 13.times do
+    img.pile-deck-card src='img/cards/backs_blue.png'
+  h2 style="margin-top: 40px;"
+div.your-hand
+  h2 style="margin-bottom: 25px;" = "#{@name} (You, Player1)"
+  img src="img/cards/dk.png"
+  img src="img/cards/d5.png"
+  img src="img/cards/c2.png"
+  img src="img/cards/h10.png"
+  img src="img/cards/s7.png"
