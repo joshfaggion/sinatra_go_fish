@@ -1,0 +1,49 @@
+
+body {
+  background-color: #339933;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 100px;
+  background-color: #339933;
+}
+
+
+.top-cards {
+  text-align: center;
+}
+
+
+.left-cards {
+   display: inline;
+   text-align: left;
+   transform: rotate(90deg);
+   left:0;
+   height:50%;
+   position: absolute;
+}
+
+.right-cards {
+   text-align: right;
+   transform: rotate(-90deg);
+   right:0;
+   height:50%;
+   position: absolute;
+}
+
+.playing-space {
+  height: 500px;
+}
+
+#middle-card {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, 20%);
+}
+
+.your-hand {
+  text-align: center;
+}
