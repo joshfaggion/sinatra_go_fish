@@ -12,6 +12,7 @@ class Client
   def enter_input(input)
     @socket.puts(input)
   end
+  
   def manual_set_player_id(id)
     @player_id = id
   end

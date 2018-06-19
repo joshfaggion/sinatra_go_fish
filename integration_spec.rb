@@ -15,7 +15,6 @@ describe "#Join Page", {:type => :feature} do
     visit('/join')
     fill_in :name, with: 'Josh'
     click_on "submit"
-    expect(page).to have_content "Josh"
-    expect(page).to have_content "Players Waiting..."
+    expect(page).to have_content "Waiting for Players..."
   end
 end
