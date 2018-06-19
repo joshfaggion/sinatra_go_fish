@@ -85,6 +85,7 @@ DEPENDENCIES
   launchy
   pry
   rack
+  rack-test
   rspec
   sinatra
   sinatra-contrib

@@ -1,24 +1,27 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pry'
-require './lib/socket_server.rb'
+Thread.new { require './lib/server_starter.rb' }
 require './lib/client.rb'
+require 'sinatra/base'
 
-server = SocketServer.new()
+class MyApp < Sinatra::Base
+  get('/') do
+    redirect('/join')
+  end
 
-get('/') do
-  redirect('/join')
-end
+  get('/join') do
+    slim(:join_game)
+  end
 
-get('/join') do
-  slim(:join_game)
-end
+  post('/waiting_page') do
+    @client = Client.new(3002)
+    sleep(0.1)
+    @name = params['name']
+    slim(:waiting_page)
+  end
 
-post('/waiting_page') do
-  server.start
-  server.create_game_lobby(4)
-  Thread.new { @client = Client.new(3002) }
-  game = server.accept_new_client
-  @name = params['name']
-  slim(:waiting_page)
+  post('/game') do
+    slim(:index)
+  end
 end

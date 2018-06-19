@@ -28,11 +28,11 @@ class SocketServer
          lobbies.last[1] += 1
          client_connection.puts "Welcome, a game lobby is complete! You are Player #{lobbies.last[1]}."
          lobbies.last[2] = true
-         return create_game(3)
+         return create_game(4)
       end
     else
-      client_connection.puts "Creating New Lobby... You are Player One."
-      create_game_lobby(3)
+      client_connection.puts "Creating New Lobby..."
+      create_game_lobby(4)
       joined_players = 1
       lobbies.last[1] += 1
       client_connection.puts "Welcome, we are currently waiting for more players. You are Player 1."
