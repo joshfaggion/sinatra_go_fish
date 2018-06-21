@@ -1,16 +1,25 @@
+script src="https://js.pusher.com/4.2/pusher.min.js"
+
 h2 There must be four players before a game can start.
+p =current_player
+ul
+  - players_array.each do |player|
+    li =player.name
 
--output = @client.take_in_output
 br
-h2 =output
-
 
 
 div.loader
-  div
-  div
-  div
-  div
-  div
-  div
-  div
+
+javascript:
+  Pusher.logToConsole = true;
+
+  var pusher = new Pusher('5b23c1673191a16f606d', {
+    cluster: 'us2',
+    encrypted: true
+  });
+
+  var channel = pusher.subscribe('app');
+  channel.bind('game-changed', function(data) {
+    window.location.reload();
+  });

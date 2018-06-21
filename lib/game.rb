@@ -12,9 +12,15 @@ class Game
     @game_winner = ''
     @deck = CardDeck.new()
     @deck.shuffle
-    num_of_players.times do
-      @players_array.push(Player.new)
-    end
+    # num_of_players.times do
+    #   @players_array.push(Player.new)
+    # end
+  end
+
+  def create_player(name)
+    player = Player.new(name)
+    @players_array.push(player)
+    return player
   end
 
   def begin_game

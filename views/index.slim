@@ -12,10 +12,6 @@ div.left-cards
 div.right-cards
   img.deck-card src="img/cards/backs_blue.png"
   img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
   h2 style="transform: rotate(90deg); margin: 50px 0 0 30px;"-Player 4-
 div.playing-space
   h2 style="margin-top:70px;" -Go Fish Pile-
@@ -23,7 +19,8 @@ div.playing-space
     img.pile-deck-card src='img/cards/backs_blue.png'
   h2 style="margin-top: 40px;"
 div.your-hand
-  h2 style="margin-bottom: 25px;" = "#{@name} (You, Player1)"
+  h2 style="margin-bottom: 25px;" = "#{current_player} (You, Player1)"
+
   img src="img/cards/dk.png"
   img src="img/cards/d5.png"
   img src="img/cards/c2.png"
