@@ -118,9 +118,6 @@ class Game
     deck.clear_deck
   end
 
-  def players_array
-    @players_array
-  end
 
   def deck
     @deck
@@ -129,9 +126,9 @@ class Game
   private
 
   def distribute_deck
-    players_array.each do |player|
+    @players_array.each do |player|
       5.times do
-        player.take_card(deck.use_top_card)
+        player.take_card(@deck.use_top_card)
       end
     end
   end

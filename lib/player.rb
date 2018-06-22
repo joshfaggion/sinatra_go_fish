@@ -55,4 +55,22 @@ class Player
       matches = []
     end
   end
+
+  def img_compatible_cards
+    new_array = []
+    @player_hand.each do |card|
+      join_array = []
+      rank = card.rank
+      suit = card.suit
+      short_suit = suit[0].downcase
+      short_rank = rank[0]
+      if short_rank == "1"
+        short_rank = "10"
+      end
+      join_array.push(short_suit)
+      join_array.push(short_rank)
+      new_array.push(join_array.join)
+    end
+    return new_array
+  end
 end

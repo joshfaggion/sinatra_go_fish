@@ -1,28 +1,35 @@
+style body { background-color: #339933; }
+- player_id = 0
+- local_players = []
+- players_array.each do |player|
+  - local_players.push(player)
+- local_players.each do |player|
+  - if player.name == current_player
+    - player_id = local_players.index(player)
+- local_players.delete_at(player_id)
+- player = players_array[player_id]
 h1.heading - Go Fish: The Ultimate Battle -
-div.top-cards
-  h2 style="margin-bottom: 30px;"-Player3-
-  img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
-  img.deck-card src='img/cards/backs_blue.png'
 div.left-cards
   img.deck-card src='img/cards/backs_blue.png'
   img.deck-card src='img/cards/backs_blue.png'
   img.deck-card src='img/cards/backs_blue.png'
-  h2 style="transform: rotate(-90deg); margin: 50px 30px 0 0;"-Player 2-
-div.right-cards
-  img.deck-card src="img/cards/backs_blue.png"
+  h2 style="transform: rotate(-90deg); margin: 50px 30px 0 0;" #{local_players[0].name}
+div.top-cards
+  h2 style="margin-bottom: 30px;"#{local_players[1].name}
   img.deck-card src='img/cards/backs_blue.png'
-  h2 style="transform: rotate(90deg); margin: 50px 0 0 30px;"-Player 4-
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+div.right-cards
+  img.deck-card src='img/cards/backs_blue.png'
+  img.deck-card src='img/cards/backs_blue.png'
+  h2 style="transform: rotate(90deg); margin: 50px 0 0 30px;" #{local_players[2].name}
 div.playing-space
-  h2 style="margin-top:70px;" -Go Fish Pile-
+  h2 style="margin-top:70px;"-Go Fish Pile-
   - 13.times do
     img.pile-deck-card src='img/cards/backs_blue.png'
   h2 style="margin-top: 40px;"
 div.your-hand
-  h2 style="margin-bottom: 25px;" = "#{current_player} (You, Player1)"
-
-  img src="img/cards/dk.png"
-  img src="img/cards/d5.png"
-  img src="img/cards/c2.png"
-  img src="img/cards/h10.png"
-  img src="img/cards/s7.png"
+  h2 style="margin-bottom: 25px;" = "#{current_player}"
+  - new_cards = player.img_compatible_cards
+  - new_cards.each do |card|
+    img src="img/cards/#{card}.png"
