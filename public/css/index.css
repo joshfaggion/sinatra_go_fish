@@ -14,6 +14,19 @@ h1 {
   margin-right: -30px;
 }
 
+.game-log {
+  text-align: left;
+  display: inline-block;
+  font-size: 15px;
+  position: fixed;
+  right: 6px;
+  top: 6px;
+}
+
+.text-bar {
+  width:300px;
+}
+
 
 .pile-deck-card {
   margin-left: -34.5px;
@@ -75,7 +88,7 @@ $lg: new-breakpoint(min-width 1024px);
 html {
 	font-family: 'Tajawal', sans-serif;
   text-shadow: 4px 4px 4px #aaa;
-	font-size: 16px;
+	font-size: 14px;
 	font-smooth: auto;
 	font-weight: 300;
 	line-height: 1.5;
@@ -92,6 +105,10 @@ body {
 	background-color:darken($color-1, 4%);
 }
 
+
+li {
+  font-size: 15px;
+}
 .game {
   background-color: #339933;
 }

@@ -12,6 +12,7 @@ class Game
     @game_winner = ''
     @deck = CardDeck.new()
     @deck.shuffle
+    @responses = []
     # num_of_players.times do
     #   @players_array.push(Player.new)
     # end
@@ -37,6 +38,12 @@ class Game
     original_fisher = request.fisher
     desired_rank = request.rank
     original_target = request.target
+    if original_target.class == String
+      original_target = find_player_by_name(original_target)
+    end
+    if original_fisher.class == String
+      original_fisher = find_player_by_name(original_fisher)
+    end
     target = find_player(original_target)
     fisher = find_player(original_fisher)
     card = target.card_in_hand(desired_rank)
@@ -44,13 +51,27 @@ class Game
       card_refills
       go_fish_card = go_fish(original_fisher)
       next_turn
-      return Response.new(original_fisher, desired_rank, original_target, false, "#{go_fish_card.string_value}").to_json
+      response = Response.new(original_fisher, desired_rank, original_target, false, "#{go_fish_card.string_value}").to_json
+      @responses.push(response)
+      return response
     else
       fisher.take_card(card)
       fisher.pair_cards
       card_refills
-      return Response.new(original_fisher, desired_rank, original_target, true, "#{card.string_value}").to_json
+      response = Response.new(original_fisher, desired_rank, original_target, true, "#{card.string_value}").to_json
+      @responses.push(response)
+      return response
     end
+  end
+
+  def find_player_by_name(target)
+    match = nil
+    @players_array.each do |player|
+      if player.name.downcase == target.downcase
+        match = @players_array.index(player)
+      end
+    end
+    return match + 1
   end
 
   def go_fish(player)
@@ -123,6 +144,47 @@ class Game
     @deck
   end
 
+  def last_five_responses
+    tmp_responses = []
+    usalbe_responses = []
+    if @responses.length == 0
+      return ["No moves yet."]
+    end
+    counter = 0
+    @responses.each do |num|
+      counter+=1
+    end
+    if counter > 5
+      usable_responses = @responses.pop(5)
+    else
+      usable_responses = @responses
+    end
+    usable_responses.each do |json_response|
+      response = Response.from_json(json_response)
+      fisher = find_player(response.fisher)
+      rank = response.rank
+      target = find_player(response.target)
+      card_found = response.card_found
+      card = response.card
+      if card_found
+        tmp_responses.push("#{fisher.name} took the #{card} from #{target.name}.")
+      else
+        tmp_responses.push("#{fisher.name} asked #{target.name} for a #{rank}, but he did not have one.")
+      end
+    end
+    return tmp_responses
+  end
+
+
+  def reset_game
+    @turn = 1
+    @players_array = []
+    @game_winner = ''
+    @deck = CardDeck.new()
+    @deck.shuffle
+    @responses = []
+  end
+  
   private
 
   def distribute_deck
@@ -132,4 +194,5 @@ class Game
       end
     end
   end
+
 end

@@ -1,5 +1,5 @@
 h2 -Join Game-
 form action="/join" method="post"
   p Name:
-  input type="text" name="name"
+  input type="text" name="name" required="" onkeydown="return (event.keyCode!=32);"
   input type="submit" value="submit"

@@ -10,3 +10,4 @@ gem 'sinatra-contrib'
 gem 'launchy'
 gem 'rack-test'
 gem 'pusher'
+gem "capybara-webkit"
